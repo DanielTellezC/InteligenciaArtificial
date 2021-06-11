@@ -14,11 +14,15 @@ if __name__ == '__main__':
 
     ### Se hace una ecualización de imagenes para resaltar las partes afectadas#
     imagesNormalEcualizadas = [cv2.equalizeHist(file) for file in imagesNormalGrises]
-    imagesNormalNeumonia =  [cv2.equalizeHist(file) for file in imagesNeumoniaGrises]
+    imagesNeumoniaEcualizadas =  [cv2.equalizeHist(file) for file in imagesNeumoniaGrises]
+    ### Se saca la media de cada imagen ###
+    imagesNormalMedia = [np.mean(file) for file in imagesNormalEcualizadas]
+    imagesNeumoniaMedia = [np.mean(file) for file in imagesNeumoniaEcualizadas]
 
     cv2.imshow("Ecualizada",imagesNormalEcualizadas[0])
     cv2.imshow("normal", imagesNormalGrises[0])
 
+    print(imagesNormalMedia[0])
     print(imagesNormalGrises[0].shape)
     print(imagesNormal[0].shape)
     print(imagesNeumonia[0].shape)
